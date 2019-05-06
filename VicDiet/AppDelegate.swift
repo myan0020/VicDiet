@@ -8,15 +8,95 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        
+        UserDefaults.standard.set(false, forKey:"everLaunched")
+        
+        
+        
+        
+
+//        window = UIWindow()
+//        window?.makeKeyAndVisible()
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .horizontal
+//        let swipingPhysicalInputController = SwipingPhysicalInputController(collectionViewLayout: layout)
+//        window?.rootViewController = swipingPhysicalInputController
+        
+
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//        let homePageController = HomePageController(collectionViewLayout: UICollectionViewFlowLayout())
+//        window?.rootViewController = UINavigationController(rootViewController: homePageController)
+//
+//        let navigationBarAppearace = UINavigationBar.appearance()
+//        navigationBarAppearace.barTintColor = UIColor(red: 125/255, green: 206/255, blue: 148/255, alpha: 1)
+        
+        
+        
+        
+//
+//
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//        let sample = UIViewController()
+//        sample.view.backgroundColor = .white
+//        window?.rootViewController = sample
+//
+//        let it: UIView = {
+//            let mmb = UIView()
+//            mmb.backgroundColor = .green
+//            return mmb
+//
+//        }()
+//
+//        let this = UIView()
+//        this.backgroundColor = .yellow
+//        sample.view.addSubview(this)
+//        this.tintColor = .yellow
+        
+//
+//        sample.view.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//
+//        sample.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": it]))
+//        sample.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[v0(30)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": it]))
+        
+        
+        
+        preDownloadData()
+        
+        if((Auth.auth().currentUser) != nil){
+            
+            
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.makeKeyAndVisible()
+            
+            
+            
+            let homePageController = HomePageController(collectionViewLayout: UICollectionViewFlowLayout())
+            let navigationController = UINavigationController(rootViewController: homePageController)
+            //navigationController.navigationBar.barTintColor = UIColor(red: 125/255, green: 206/255, blue: 148/255, alpha: 1)
+            navigationController.navigationBar.barTintColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+            window?.rootViewController = navigationController
+            
+        }
+        
+        
         return true
     }
 
@@ -89,5 +169,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func preDownloadData(){
+        print("We are downloading data。。。Please wait")
+    }
+    
+    
+    
+    
+    
 }
 
