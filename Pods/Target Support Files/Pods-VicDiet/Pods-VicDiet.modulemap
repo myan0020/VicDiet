@@ -1,0 +1,6 @@
+framework module Pods_VicDiet {
+  umbrella header "Pods-VicDiet-umbrella.h"
+
+  export *
+  module * { export * }
+}
